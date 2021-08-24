@@ -1,0 +1,34 @@
+<html>
+<head>
+</head>
+<body>
+
+
+<div id="lista-centro">
+  <input class="search" />
+  <ul class="list"></ul>
+</div>
+
+<div style="display:none;">
+  <li id="lista-item">
+    <h3 class="nombre"></h3>
+    <p class="desc"></p>
+  </li>
+</div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.0.2/list.min.js" integrity="sha512-MT5YyrGWqMGkIbwkVUZEWGrRDjlNx8loukEdFyzLo4s8INKVxnDQy2eFcpmnWGrFwJ+X8mRTQOJpWCayXz7+Og==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+var options = {
+  item: 'lista-item'
+};
+
+var values = [
+  { nombre: '<a href="https://docent.edu.gva.es">Pedo</a>', desc: 'Esto es muy serio' },
+  { nombre: '<a href="https://docent.edu.gva.es">Caca</a>', desc: 'Esto es una broma' }
+];
+
+var listaCentro = new List('lista-centro', options, values);
+</script>
+</html>
+      
