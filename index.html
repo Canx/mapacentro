@@ -1,11 +1,15 @@
+<!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
 
 
-<div id="lista-centro">
-  <input class="search" />
+<div id="lista-centro" class="container">
+  <h1>Mapa de centre</h1>
+  <input class="search" type="text" />
   <ul class="list"></ul>
 </div>
 
@@ -23,12 +27,20 @@ var options = {
   item: 'lista-item'
 };
 
-var values = [
-  { nombre: '<a href="https://docent.edu.gva.es">Pedo</a>', desc: 'Esto es muy serio' },
-  { nombre: '<a href="https://docent.edu.gva.es">Caca</a>', desc: 'Esto es una broma' }
-];
+var values = [];
+var listaCentro = new List('lista-centro', options);
 
-var listaCentro = new List('lista-centro', options, values);
+fetch('https://api.npoint.io/d513058e95049da03c1b')
+  .then(res => res.json())
+  .then((out) => {
+        out["list"].forEach(function(elemento) { 
+          values.push({ nombre: '<a href="' + elemento["url"] + '">' + elemento["nombre"] + '</a>', desc: elemento["desc"] });
+        });
+	//console.log(out["list"]);
+        //console.log(values);
+        listaCentro.add(values);
+    }
+    ).catch(err => console.error(err));
 </script>
 </html>
       
